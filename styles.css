@@ -1,0 +1,81 @@
+/* the colors used all over the page — change a value here and it updates everywhere */
+:root{
+  --bg:#0d1117; --card:#161b22; --border:#30363d;
+  --text:#e6edf3; --muted:#8b949e;
+  --green:#3fb950; --blue:#58a6ff; --red:#f85149; --orange:#d29922; --yellow:#e3b341;
+}
+/* remove the browser's default spacing so our layout starts clean */
+*{box-sizing:border-box;margin:0;padding:0}
+/* the whole page: dark background, light text, content centered */
+body{background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  min-height:100vh;display:flex;justify-content:center;padding:32px 16px 48px}
+/* the narrow column that holds all the content */
+.wrap{width:100%;max-width:560px}
+/* centers the title block at the top */
+header{text-align:center;margin-bottom:24px}
+/* the big page title */
+header h1{font-size:1.7rem;letter-spacing:-.5px}
+/* the little diamond symbol next to the title, shown in green */
+header h1 span{color:var(--green)}
+/* the small grey subtitle under the title */
+header p{color:var(--muted);margin-top:8px;font-size:.95rem}
+/* the card holding the generator controls */
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+/* the box showing the generated password — click it to copy */
+.outbox{background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  padding:16px;cursor:pointer;position:relative;transition:border-color .15s;overflow:hidden}
+/* green border on the password box when your mouse hovers over it */
+.outbox:hover{border-color:var(--green)}
+/* the password text itself, in a fixed-width font so it is easy to read */
+#password{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:1.05rem;word-break:break-all;line-height:1.6;min-height:1.6em}
+/* the small "click the password to copy it" line */
+.hint{font-size:.75rem;color:var(--muted);margin-top:8px;text-align:center}
+/* a settings row, like the length slider row */
+.row{margin-top:18px}
+/* the label row above a control: name on the left, value on the right */
+.rowlabel{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+/* the grey name part of a label row, like "Length" */
+.rowlabel span{font-size:.85rem;color:var(--muted)}
+/* the number showing the current length, like 20 */
+#lenval{font-family:ui-monospace,monospace;font-weight:700;color:var(--text);font-size:1rem}
+/* the length slider itself */
+input[type=range]{width:100%;accent-color:var(--green);height:28px;cursor:pointer}
+/* the 2x2 grid of character-set toggles */
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+/* one toggle box, e.g. Uppercase */
+.toggle{display:flex;align-items:center;gap:10px;background:var(--bg);
+  border:1px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;
+  font-size:.9rem;user-select:none;transition:border-color .15s}
+/* toggle box look when your mouse hovers over it */
+.toggle:hover{border-color:var(--muted)}
+/* the checkbox inside a toggle */
+.toggle input{accent-color:var(--green);width:18px;height:18px;cursor:pointer}
+/* the small sample characters under a toggle name, like A–Z */
+.toggle .chars{color:var(--muted);font-size:.75rem;font-family:ui-monospace,monospace}
+/* the big green Generate password button */
+.btn{width:100%;margin-top:18px;padding:14px;border:none;border-radius:10px;
+  font-size:1rem;font-weight:700;cursor:pointer;color:#04140a;
+  background:linear-gradient(135deg,var(--green),var(--blue));transition:transform .08s}
+/* the button shrinks a tiny bit while you press it */
+.btn:active{transform:scale(.98)}
+/* the strength meter area under the button */
+.meter{margin-top:18px}
+/* the track of the strength bar */
+.meterbar{height:8px;background:var(--bg);border:1px solid var(--border);
+  border-radius:99px;overflow:hidden}
+/* the colored fill inside the strength bar — width set by the code */
+#meterfill{height:100%;width:0%;border-radius:99px;transition:width .25s,background .25s;background:var(--red)}
+/* the row under the bar: strength word on the left, bits on the right */
+.meterinfo{display:flex;justify-content:space-between;margin-top:8px;font-size:.82rem}
+/* the strength word, like Strong */
+#strength{font-weight:700}
+/* the "bits of entropy" number */
+#entropy{color:var(--muted);font-family:ui-monospace,monospace}
+/* the green message line, e.g. "Copied to clipboard." */
+.msg{min-height:1.3em;text-align:center;font-size:.85rem;margin-top:10px;color:var(--green)}
+/* the small note at the very bottom of the page */
+footer{margin-top:24px;text-align:center;color:var(--muted);font-size:.78rem;line-height:1.7}
+/* on small phone screens: toggles stack in one column, smaller title */
+@media(max-width:420px){ .toggles{grid-template-columns:1fr} header h1{font-size:1.45rem} }

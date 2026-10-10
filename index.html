@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Generator — strong passwords, locally</title>
+<meta name="description" content="Generate cryptographically secure passwords in your browser. Nothing leaves your device.">
+<!-- all page styles live in styles.css -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- the centered page column -->
+<div class="wrap">
+  <!-- the title and subtitle at the top -->
+  <header>
+    <h1><span>◈</span> Password Generator</h1>
+    <p>Cryptographically secure passwords. Generated locally — nothing leaves your device.</p>
+  </header>
+
+  <!-- the card holding the generator controls -->
+  <div class="card">
+    <!-- the password output box — click it to copy -->
+    <div class="outbox" id="outbox" title="Click to copy">
+      <div id="password"></div>
+    </div>
+    <!-- the small hint under the password box -->
+    <div class="hint">click the password to copy it</div>
+    <!-- the green message line, e.g. "Copied to clipboard." -->
+    <div class="msg" id="msg"></div>
+
+    <!-- the length slider row -->
+    <div class="row">
+      <div class="rowlabel"><span>Length</span><span id="lenval">20</span></div>
+      <input type="range" id="length" min="8" max="64" value="20" step="1">
+    </div>
+
+    <!-- the four character-set toggles -->
+    <div class="toggles">
+      <label class="toggle"><input type="checkbox" id="upper" checked><span>Uppercase<br><span class="chars">A–Z</span></span></label>
+      <label class="toggle"><input type="checkbox" id="lower" checked><span>Lowercase<br><span class="chars">a–z</span></span></label>
+      <label class="toggle"><input type="checkbox" id="numbers" checked><span>Numbers<br><span class="chars">0–9</span></span></label>
+      <label class="toggle"><input type="checkbox" id="symbols" checked><span>Symbols<br><span class="chars">!@#$…</span></span></label>
+    </div>
+
+    <!-- the big generate button -->
+    <button class="btn" id="genbtn">Generate password</button>
+
+    <!-- the strength meter: bar + word + bits -->
+    <div class="meter">
+      <div class="meterbar"><div id="meterfill"></div></div>
+      <div class="meterinfo"><span id="strength"></span><span id="entropy"></span></div>
+    </div>
+  </div>
+
+  <!-- the small note at the bottom -->
+  <footer>Uses <code>crypto.getRandomValues</code> with rejection sampling (no modulo bias).<br>Every selected character set is guaranteed to appear at least once.</footer>
+</div>
+
+<!-- all page logic lives in app.js -->
+<script src="app.js"></script>
+</body>
+</html>
